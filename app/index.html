@@ -1,33 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Overview | NusaStat</title>
-<meta name="description" content="NusaStat: population, economy, health and education statistics for Indonesia, with the source and year on every figure.">
-<link rel="stylesheet" href="styles.css">
+<title>NusaStat: National Statistics Portal of Indonesia</title>
+<meta name="description" content="NusaStat: Indonesia in numbers. Population, GDP, poverty, health and provinces, 2015-2024, each figure with its source and year.">
+<link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-<header class="site-header">
-  <div class="header-inner">
-    <a class="wordmark" href="#/">Nusa<em>Stat</em></a>
-    <span class="site-sub">National Statistics Portal &middot; Indonesia</span>
+<header class="site-head">
+  <div class="wrap head-in">
+    <a class="brand" href="#/overview"><span class="mark">N</span> NusaStat</a>
+    <nav aria-label="Sections">
+      <a data-route="overview" href="#/overview">Overview</a>
+      <a data-route="economy" href="#/economy">Economy</a>
+      <a data-route="people" href="#/people">People</a>
+      <a data-route="health" href="#/health">Health &amp; Education</a>
+      <a data-route="provinces" href="#/provinces">Provinces</a>
+      <a data-route="methods" href="#/methods">Methods &amp; Sources</a>
+    </nav>
   </div>
-  <nav class="site-nav" aria-label="Sections">
-    <a href="#/">Overview</a>
-    <a href="#/economy">Economy</a>
-    <a href="#/people">People</a>
-    <a href="#/health">Health &amp; Education</a>
-    <a href="#/regions">Provinces</a>
-    <a href="#/methods">Methods &amp; Sources</a>
-  </nav>
 </header>
-<main class="page" id="view"></main>
-<footer class="site-footer">
-  <p>NusaStat is an independent statistics portal. Figures come from the World Bank World Development Indicators,
-  Statistics Indonesia (BPS), the ILO, the IMF and UNDP; every figure names its source and year.
-  Updated November 2026. NusaStat is not affiliated with any of those organisations.</p>
+<main id="app" class="wrap"></main>
+<footer class="site-foot">
+  <div class="wrap">
+    <p><strong>NusaStat</strong> is an independent reader of public statistics, not affiliated
+    with the World Bank, BPS Statistics Indonesia, the ILO, the IMF or UNDP.</p>
+    <p>Figures: World Bank World Development Indicators, BPS Statistics Indonesia,
+    ILO ILOSTAT. Latest observation 2024 unless a figure says otherwise.
+    This site runs entirely offline from its own files.</p>
+  </div>
 </footer>
-<script type="module" src="app.js"></script>
+<script type="module" src="./app.js"></script>
 </body>
 </html>

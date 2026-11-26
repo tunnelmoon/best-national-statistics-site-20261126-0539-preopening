@@ -1,214 +1,125 @@
-// NusaStat data: headline figures for Indonesia, each with its source and year.
-// All figures are the latest published values available as of November 2026.
-// Sources: World Bank World Development Indicators (WB WDI), Statistics Indonesia
-// (BPS), International Monetary Fund (IMF), United Nations Development Programme
-// (UNDP), International Labour Organization (ILO). Series values come from the
-// same sources; see the Methods page for the full source list.
-
-export const SITE = {
-  name: "NusaStat",
-  fullName: "NusaStat: National Statistics Portal of Indonesia",
-  tagline: "Indonesia in numbers, from the sources that publish them.",
-  updated: "November 2026",
-};
+// NusaStat data: real figures for Indonesia, each with its source and year.
+// Sources: World Bank World Development Indicators (WDI), BPS Statistics
+// Indonesia, ILO ILOSTAT, IMF World Economic Outlook. Values are the latest
+// published observation for the year shown; nothing here is estimated by us.
 
 export const YEARS = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024];
 
-// Headline indicators shown on the overview and topic pages.
-export const INDICATORS = [
-  {
-    id: "population",
-    topic: "people",
-    name: "Population",
-    value: 283.5,
-    unit: "million",
-    display: "283.5m",
-    year: 2024,
-    source: "World Bank WDI",
-    note: "4th largest in the world",
-    change: "+0.8% on 2023",
-  },
-  {
-    id: "gdp",
-    topic: "economy",
-    name: "GDP, current US$",
-    value: 1396.3,
-    unit: "US$ billion",
-    display: "$1.40tn",
-    year: 2024,
-    source: "World Bank WDI",
-    note: "16th largest economy",
-    change: "+5.0% real growth",
-  },
-  {
-    id: "gdp-per-capita",
-    topic: "economy",
-    name: "GDP per capita",
-    value: 4925,
-    unit: "US$",
-    display: "$4,925",
-    year: 2024,
-    source: "World Bank WDI",
-    note: "Upper middle income",
-    change: "+1.4% on 2023",
-  },
-  {
-    id: "unemployment",
-    topic: "people",
-    name: "Unemployment rate",
-    value: 3.3,
-    unit: "% of labour force",
-    display: "3.3%",
-    year: 2024,
-    source: "ILO / World Bank WDI",
-    note: "Modelled ILO estimate",
-    change: "Down from 3.6% in 2023",
-  },
-  {
-    id: "poverty",
-    topic: "people",
-    name: "Poverty rate (national line)",
-    value: 8.57,
-    unit: "% of population",
-    display: "8.57%",
-    year: 2024,
-    source: "Statistics Indonesia (BPS)",
-    note: "September 2024, lowest on record",
-    change: "Down from 9.36% in 2023",
-  },
-  {
-    id: "life-expectancy",
-    topic: "health",
-    name: "Life expectancy at birth",
-    value: 71.3,
-    unit: "years",
-    display: "71.3 yrs",
-    year: 2024,
-    source: "World Bank WDI",
-    note: "Women 73.4, men 69.2",
-    change: "+0.2 years on 2023",
-  },
-  {
-    id: "inflation",
-    topic: "economy",
-    name: "Inflation (CPI, Dec yoy)",
-    value: 1.57,
-    unit: "%",
-    display: "1.57%",
-    year: 2024,
-    source: "Statistics Indonesia (BPS)",
-    note: "Within the 1.5-3.5% target band",
-    change: "Down from 2.61% in 2023",
-  },
-  {
-    id: "internet",
-    topic: "people",
-    name: "People using the internet",
-    value: 72.8,
-    unit: "% of population",
-    display: "72.8%",
-    year: 2024,
-    source: "World Bank WDI",
-    note: "122.5 mobile subscriptions per 100 people",
-    change: "+6.3 points on 2023",
-  },
+export const KEY_INDICATORS = [
+  { name: 'Population', value: '283.5m', detail: '4th most populous country', source: 'World Bank WDI', year: 2024 },
+  { name: 'GDP', value: '$1.40tn', detail: '16th largest economy', source: 'World Bank WDI', year: 2024 },
+  { name: 'GDP per capita', value: '$4,925', detail: 'Upper middle income', source: 'World Bank WDI', year: 2024 },
+  { name: 'GDP growth', value: '5.0%', detail: 'Annual real growth', source: 'World Bank WDI', year: 2024 },
+  { name: 'Unemployment', value: '3.3%', detail: 'Modelled ILO estimate', source: 'ILO ILOSTAT', year: 2024 },
+  { name: 'Poverty rate', value: '8.57%', detail: '24.06 million people', source: 'BPS Statistics Indonesia', year: 2024 },
+  { name: 'Life expectancy', value: '71.3 years', detail: 'At birth', source: 'World Bank WDI', year: 2024 },
+  { name: 'Inflation', value: '1.57%', detail: 'December, year on year', source: 'BPS Statistics Indonesia', year: 2024 },
+  { name: 'Internet users', value: '72.8%', detail: 'Share of population', source: 'World Bank WDI', year: 2024 },
+  { name: 'Exports of goods and services', value: '22.2%', detail: 'Share of GDP', source: 'World Bank WDI', year: 2024 },
 ];
 
-// Ten-year series, one per chart. Values are the published annual figures.
+// 10-year series, World Bank WDI unless noted.
 export const SERIES = {
-  gdpGrowth: {
-    label: "Real GDP growth",
-    unit: "% per year",
-    source: "World Bank WDI",
-    years: YEARS,
-    values: [4.9, 5.0, 5.1, 5.2, 5.0, -2.1, 3.7, 5.3, 5.0, 5.0],
+  gdp: {
+    label: 'GDP, current US$ billions',
+    source: 'World Bank WDI',
+    values: [860.9, 931.9, 1015.6, 1042.3, 1119.1, 1059.6, 1186.1, 1319.1, 1371.2, 1396.3],
   },
-  gdpPerCapita: {
-    label: "GDP per capita, current US$",
-    unit: "US$",
-    source: "World Bank WDI",
-    years: YEARS,
-    values: [3332, 3563, 3838, 3894, 4135, 3872, 4293, 4726, 4860, 4933],
+  growth: {
+    label: 'GDP growth, annual %',
+    source: 'World Bank WDI',
+    values: [4.9, 5.0, 5.1, 5.2, 5.0, -2.1, 3.7, 5.3, 5.1, 5.0],
   },
   population: {
-    label: "Total population",
-    unit: "million people",
-    source: "World Bank WDI",
-    years: YEARS,
-    values: [258.4, 261.6, 264.7, 267.7, 270.6, 273.5, 276.4, 279.1, 282.1, 283.5],
+    label: 'Population, millions',
+    source: 'World Bank WDI',
+    values: [258.2, 261.4, 264.5, 267.7, 270.6, 274.0, 276.6, 279.4, 281.5, 283.5],
   },
   poverty: {
-    label: "Poverty rate, national line (BPS, September)",
-    unit: "% of population",
-    source: "Statistics Indonesia (BPS)",
-    years: YEARS,
-    values: [11.13, 10.7, 10.12, 9.66, 9.22, 10.19, 9.71, 9.57, 9.36, 8.57],
+    label: 'Poverty rate, % (March observation)',
+    source: 'BPS Statistics Indonesia',
+    note: 'September 2024 observation: 8.57%.',
+    values: [11.22, 10.86, 10.64, 9.82, 9.41, 9.78, 10.14, 9.54, 9.36, 9.03],
   },
   unemployment: {
-    label: "Unemployment rate, modelled ILO estimate",
-    unit: "% of labour force",
-    source: "ILO / World Bank WDI",
-    years: [2019, 2020, 2021, 2022, 2023, 2024],
-    values: [3.6, 4.3, 4.4, 3.9, 3.6, 3.3],
+    label: 'Unemployment, % of labour force (modelled)',
+    source: 'ILO ILOSTAT',
+    values: [4.5, 4.3, 4.1, 4.3, 3.6, 4.3, 4.3, 3.9, 3.5, 3.3],
   },
-  trade: {
-    label: "Exports and imports of goods and services",
-    unit: "% of GDP",
-    source: "World Bank WDI",
-    years: [2024],
-    values: [22.2],
-    extra: { imports: 20.4, fdi: 24.2, debt: 40.8 },
+  inflation: {
+    label: 'Consumer price inflation, annual %',
+    source: 'World Bank WDI',
+    note: 'BPS headline inflation, December 2024 year on year: 1.57%.',
+    values: [6.4, 3.5, 3.8, 3.2, 2.8, 1.9, 1.6, 4.2, 3.7, 2.3],
+  },
+  lifeExpectancy: {
+    label: 'Life expectancy at birth, years',
+    source: 'World Bank WDI',
+    values: [69.6, 69.9, 70.1, 70.4, 70.6, 70.5, 70.0, 70.8, 71.1, 71.3],
+  },
+  internet: {
+    label: 'Individuals using the Internet, % of population',
+    source: 'World Bank WDI',
+    values: [22.0, 25.4, 32.3, 39.9, 47.7, 53.7, 62.1, 66.5, 69.2, 72.8],
+  },
+  exports: {
+    label: 'Exports of goods and services, % of GDP',
+    source: 'World Bank WDI',
+    values: [21.2, 19.1, 20.4, 21.0, 18.5, 17.3, 21.6, 26.0, 21.9, 22.2],
+  },
+  imports: {
+    label: 'Imports of goods and services, % of GDP',
+    source: 'World Bank WDI',
+    values: [20.8, 18.7, 19.9, 22.1, 19.3, 15.9, 19.5, 23.2, 20.3, 20.4],
   },
 };
 
-// Age structure, 2024, World Bank WDI.
+// Age structure 2024, World Bank WDI.
 export const AGE_STRUCTURE = [
-  { group: "0-14 years", share: 24.6 },
-  { group: "15-64 years", share: 68.1 },
-  { group: "65+ years", share: 7.3 },
+  { label: 'Ages 0-14', value: 24.6, source: 'World Bank WDI', year: 2024 },
+  { label: 'Ages 15-64', value: 68.1, source: 'World Bank WDI', year: 2024 },
+  { label: 'Ages 65 and over', value: 7.3, source: 'World Bank WDI', year: 2024 },
 ];
 
-// Largest provinces by population, 2024 mid-year estimates, BPS.
-export const PROVINCES = [
-  { name: "West Java", population: 50.0, share: 17.6 },
-  { name: "East Java", population: 41.8, share: 14.7 },
-  { name: "Central Java", population: 37.9, share: 13.4 },
-  { name: "North Sumatra", population: 15.6, share: 5.5 },
-  { name: "Banten", population: 12.4, share: 4.4 },
-  { name: "Jakarta", population: 10.6, share: 3.7 },
-  { name: "South Sulawesi", population: 9.5, share: 3.4 },
-  { name: "Lampung", population: 9.3, share: 3.3 },
-  { name: "South Sumatra", population: 8.9, share: 3.1 },
-  { name: "West Sumatra", population: 6.0, share: 2.1 },
-  { name: "Riau", population: 5.8, share: 2.0 },
-  { name: "East Kalimantan", population: 3.9, share: 1.4 },
-];
-
-// Health and education figures.
+// Health and education indicators.
 export const HEALTH_EDUCATION = [
-  { name: "Infant mortality", value: "15.2", unit: "per 1,000 live births", year: 2024, source: "World Bank WDI" },
-  { name: "Maternal mortality", value: "140", unit: "per 100,000 live births", year: 2023, source: "World Bank WDI" },
-  { name: "Health spending", value: "2.7%", unit: "of GDP", year: 2023, source: "World Bank WDI" },
-  { name: "Physicians", value: "0.5", unit: "per 1,000 people", year: 2023, source: "World Bank WDI" },
-  { name: "Primary school enrolment, gross", value: "100.4%", unit: "of school-age children", year: 2025, source: "World Bank WDI" },
-  { name: "Secondary school enrolment, gross", value: "97.2%", unit: "of school-age children", year: 2025, source: "World Bank WDI" },
-  { name: "Tertiary enrolment, gross", value: "44.9%", unit: "of the age group", year: 2023, source: "World Bank WDI" },
-  { name: "Human Development Index", value: "0.728", unit: "index (0-1)", year: 2022, source: "UNDP" },
+  { name: 'Life expectancy at birth', value: '71.3 years', source: 'World Bank WDI', year: 2024 },
+  { name: 'Under-5 mortality', value: '21.5 per 1,000 live births', source: 'World Bank WDI', year: 2023 },
+  { name: 'Infant mortality', value: '18.8 per 1,000 live births', source: 'World Bank WDI', year: 2023 },
+  { name: 'Health spending', value: '2.7% of GDP', source: 'World Bank WDI', year: 2023 },
+  { name: 'Primary school enrolment', value: '100.4% gross', source: 'World Bank WDI', year: 2025 },
+  { name: 'Youth literacy (ages 15-24)', value: '99.7%', source: 'World Bank WDI', year: 2023 },
+  { name: 'Fertility rate', value: '2.1 births per woman', source: 'World Bank WDI', year: 2023 },
+  { name: 'Urban population', value: '58.8%', detail: 'Share of total population', source: 'World Bank WDI', year: 2024 },
 ];
 
-// Latest releases, as a statistics office would list them.
-export const RELEASES = [
-  { date: "Nov 2026", title: "Labour Force Situation, August 2026", source: "BPS" },
-  { date: "Nov 2026", title: "Consumer Price Index, October 2026", source: "BPS" },
-  { date: "Oct 2026", title: "Economic Growth, Q3 2026", source: "BPS" },
-  { date: "Sep 2026", title: "Poverty Profile, March 2026", source: "BPS" },
-  { date: "Aug 2026", title: "World Development Indicators, 2026 update", source: "World Bank" },
+// Ten largest provinces by population. Population: BPS mid-year estimate 2024.
+// Poverty: BPS, September 2024. GDP share: BPS regional accounts 2024.
+export const PROVINCES = [
+  { name: 'West Java', population: 49.9, poverty: 7.5, gdpShare: 14.4 },
+  { name: 'East Java', population: 41.8, poverty: 10.3, gdpShare: 14.6 },
+  { name: 'Central Java', population: 37.9, poverty: 10.5, gdpShare: 8.2 },
+  { name: 'North Sumatra', population: 15.6, poverty: 8.3, gdpShare: 4.9 },
+  { name: 'Banten', population: 12.4, poverty: 6.2, gdpShare: 3.2 },
+  { name: 'Jakarta', population: 10.7, poverty: 4.1, gdpShare: 17.4 },
+  { name: 'South Sulawesi', population: 9.4, poverty: 8.5, gdpShare: 3.2 },
+  { name: 'Lampung', population: 9.3, poverty: 11.8, gdpShare: 2.0 },
+  { name: 'South Sumatra', population: 8.8, poverty: 11.8, gdpShare: 2.9 },
+  { name: 'West Sumatra', population: 6.0, poverty: 5.9, gdpShare: 1.7 },
 ];
 
-export function indicatorById(id) {
-  return INDICATORS.find((item) => item.id === id);
-}
+export const SOURCES = [
+  { name: 'World Bank World Development Indicators', short: 'World Bank WDI', note: 'Population, GDP, growth, life expectancy, internet use, trade, health and education series, 2015-2024.' },
+  { name: 'BPS Statistics Indonesia', short: 'BPS', note: 'Poverty rate and provincial population, poverty and regional GDP figures, 2024.' },
+  { name: 'ILO ILOSTAT', short: 'ILO', note: 'Modelled unemployment estimates, 2015-2024.' },
+  { name: 'IMF World Economic Outlook', short: 'IMF', note: 'Cross-check for GDP and growth aggregates.' },
+  { name: 'UNDP Human Development Report', short: 'UNDP', note: 'Context for life expectancy and schooling.' },
+];
 
-export function indicatorsByTopic(topic) {
-  return INDICATORS.filter((item) => item.topic === topic);
+export function toCsv(headers, rows) {
+  const esc = (v) => {
+    const s = String(v);
+    return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
+  };
+  return [headers.map(esc).join(','), ...rows.map((r) => r.map(esc).join(','))].join('\n') + '\n';
 }

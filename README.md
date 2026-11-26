@@ -4,40 +4,59 @@
 
 # NusaStat: National Statistics Portal of Indonesia
 
-A make.fun bounty entry for [best-national-statistics-site-20261126-0539](https://make.fun/bounty/best-national-statistics-site-20261126-0539).
+A national statistics site for Indonesia, built for the make.fun bounty
+[best-national-statistics-site-20261126-0539](https://make.fun/bounty/best-national-statistics-site-20261126-0539).
+It runs offline in a browser from its own static files: no framework, no
+webfont, no network request.
 
-NusaStat is a working national statistics site that runs offline from static files, on desktop and on a phone. It covers Indonesia with real published figures, each naming its source and year: population, GDP, growth, poverty, unemployment, life expectancy, enrolment, trade and the provinces.
+## What it shows
 
-## What it has
+Six pages, reached by hash routing from the nav bar:
 
-- Overview with eight headline indicators, a search box, GDP growth and population charts with a year range control, largest provinces and latest releases.
-- Economy page: GDP, GDP per capita, inflation, trade and finance tables, with CSV download.
-- People page: population chart, age structure donut, poverty and unemployment charts, labour force table.
-- Health and education page: full indicator table with CSV download.
-- Provinces page: bar chart of the ten largest provinces and a sortable, filterable table of provinces.
-- Methods and sources page: where every number comes from and what the site does not claim.
+- **Overview**: ten headline indicators for 2024, a live indicator search,
+  and the GDP line chart.
+- **Economy**: GDP 2015-2024 with a year-range control (2015-2024, 2020-2024,
+  2015-2019), real growth bars showing the 2020 Covid contraction, and a
+  trade table with CSV download.
+- **People**: population series, age-structure donut, poverty and
+  unemployment series.
+- **Health and Education**: life expectancy and internet-use charts, plus a
+  health and education table with CSV download.
+- **Provinces**: the ten largest provinces in a sortable, filterable table
+  with CSV download, and a population bar chart.
+- **Methods and Sources**: where every number comes from, and a statement
+  that the site is independent and not affiliated with its sources.
 
-## How it is built
+## Figures
 
-- `app/` holds the site as static files with no build step: `index.html`, `styles.css`, and ES modules `app.js` (router and controls), `views.js` (page templates), `charts.js` (SVG line, bar and donut charts drawn in code), `data.js` (figures with sources and years).
-- No framework, no network request, no webfont: system fonts only, charts drawn by hand, so the first load is small.
-- `main.ts` (Node 22, standard library only) copies `app/` and `screenshots/` to the output directory and writes `dossier.json` with `buildDossier` from `vendor/makefun-frontend.ts`.
-- `screenshots/` holds four real renders of the site in a browser: the overview, the economy page, the provinces page, and a phone-sized overview.
+Every figure carries its source and year next to it. Headline values for
+2024: population 283.5 million, GDP $1.40 trillion, GDP per capita $4,925,
+unemployment 3.3%, poverty 8.57% (BPS, September 2024), life expectancy
+71.3 years, inflation 1.57% (BPS, December year on year), internet use
+72.8%. Sources: World Bank World Development Indicators, BPS Statistics
+Indonesia, ILO ILOSTAT, IMF World Economic Outlook, UNDP.
+
+## Design
+
+Dark teal and amber on warm paper, serif display type, charts hand-drawn as
+SVG (line, bar, donut). Source is split one job per file: `app/data.js`
+holds the figures, `app/charts.js` draws the charts, `app/views.js` holds
+the six page templates, `app/app.js` routes and wires the controls.
 
 ## Run it
 
-Serve `app/` with any static server and open `index.html`. For example:
+Serve `app/` with any static server and open `index.html`, for example:
 
 ```sh
-cd app && python3 -m http.server 8080
+node serve.ts
 ```
 
-Then open http://localhost:8080 in a browser. To build the hand-in:
+Then open http://localhost:8080. To hand the entry in:
 
 ```sh
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 ```
 
-## Sources
+## License
 
-World Bank World Development Indicators, Statistics Indonesia (BPS), International Labour Organization, International Monetary Fund, United Nations Development Programme. NusaStat is an independent portal and is not affiliated with any of those organisations.
+MIT. See [LICENSE](LICENSE).
